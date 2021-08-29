@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+
+{% block page %}
+
+
+
+
+<div class="container border shadow text-center m-auto" style="height: 400px;">  
+             <h2 class="text-center card-title pb-2 mt-5 mb-4"> {{title}} </h2>
+             <!-- <span class="h3">Question : </span><span class="h4"> {{question}} </span>
+            <br>
+            <br>
+            <span class="h3">Answer: </span> <span class="h4"> {{answer}} </span>
+            <br>
+            <br>
+            <span class="h4"> subject: </span><span class="h5"> {{subject}} </span> -->
+            <table class="m-auto table">
+                
+                <tr>
+                    <th class="h4"> question : </th>
+                    <td class="h6"> {{question}} </td>
+                </tr>
+                <tr>
+                    <th class="h4">answer : </th>
+                    <td class="h6">{{answer}}</td>
+                </tr>
+                <tr>
+                    <th class="h4">subject : </th>
+                    <td class="h6">{{subject}}</td>
+                </tr>
+            </table>
+    </div>
+
+
+<div class="container mt-4">
+    <div class="text-center m-auto" style="width: 50%;">
+        <!-- Edit -->
+        <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#example"> Edit </button> 
+         <br>
+        <!-- Delete -->
+        <a href="/delete/{{qq.id}}"> <button class="btn btn-danger btn-block"> Delete </button> </a>
+    </div>
+    
+</div>
+
+
+
+<div class="modal fade" id="example" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"> Edit question </h3>
+                <button class="close" data-dismiss="modal" style="outline: none;"> <span> &times; </span></button>
+            </div>
+            <div class="modal-body">
+                <form action="/edit/{{qq.id}}" method="POST">
+                    <span>Title : </span> <input name="titles" type="text" value="{{qq.title}}" class="form-control"> <br>
+                    <span>Question : </span> <input name="questions" type="text" value="{{qq.question}}" class="form-control"> <br>
+                    <span> answer :  </span> <input name="answers" type="text" value="{{qq.answer}}" class="form-control"> <br>
+                    <label for="Subject"> Choose Subject </label> <br>
+                    <select style="background-color: rgb(204, 226, 233);" id="Subject" class="form-select form-select-lg btn btn-block" name="subjects" aria-label=".form-select-lg example">
+                        <option selected>{{qq.subject}}</option>
+                        <option value="Math">Math</option>
+                        <option value="Arabic">Arabic</option>
+                        <option value="English">English</option>
+                        <option value="Physics">Physics</option>
+                      </select> <br>
+                    <hr>
+                    <input type="submit" class="btn btn-primary mt-5">
+                </form>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

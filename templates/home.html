@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block body  %}
+
+<h1 class="text-center" style="border: none;"> Questions </h1>
+
+{% for ques in user.questions %}
+
+<ul class="list-group mt-5">
+    <li class="list-group-item ss" style="border:none;;border-bottom: 2px solid black; background-color:lavender;"> <a href="/question/{{user.id}}/{{ques.id}}" class="h3 ss"> {{ ques.title }} </a> <span class="close"> <a href="/delete/{{ques.id}}"> &times; </a></span></li>
+</ul>
+
+{% endfor %}
+
+
+{% endblock %}
